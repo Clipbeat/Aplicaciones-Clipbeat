@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipbeat Audiciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #131A2D; /* Fondo azul oscuro personalizado */
+            color: white; /* Letras blancas */
+        }
+        .form-container {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #131A2D; /* Fondo azul oscuro personalizado */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra en el formulario */
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background-color: #003366; /* Botón azul */
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra en el botón */
+        }
+        .btn-primary:hover {
+            background-color: #002244; /* Botón azul más oscuro al pasar el mouse */
+        }
+        label {
+            color: white;
+        }
+        .required:after {
+            content: " *";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container form-container">
+    <h2 class="text-center">Clipbeat Audiciones</h2>
+    <form action="https://script.google.com/macros/s/AKfycbwf9-KcPCnOMdHWiHe38xOFqceB85BM8mzprqGo99JT1mh58-u_HTPxPlUv_WhDuXDh/exec" method="post">
+        <!-- Selección de ubicación -->
+        <div class="mb-3">
+            <label for="ubicacion" class="form-label">Ubicación</label>
+            <select class="form-select" id="ubicacion" name="ubicacion" required>
+                <option value="">Selecciona una ubicación</option>
+                <option value="madrid">Madrid</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="valencia">Valencia</option>
+            </select>
+        </div>
+
+        <!-- Ofertas para Madrid -->
+        <div class="mb-3" id="ofertas-madrid" style="display:none;">
+            <label class="form-label">Ofertas en Madrid</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="oferta" id="oferta1" value="cantante-queen">
+                <label class="form-check-label" for="oferta1">
+                    Cantante para cover de Queen - Boadilla del Monte, Madrid
+                </label>
+            </div>
+            <!-- Más ofertas se pueden agregar aquí manualmente -->
+        </div>
+
+        <!-- Ofertas para Barcelona -->
+        <div class="mb-3" id="ofertas-barcelona" style="display:none;">
+            <label class="form-label">Ofertas en Barcelona</label>
+            <!-- Aquí puedes agregar ofertas de Barcelona -->
+        </div>
+
+        <!-- Ofertas para Valencia -->
+        <div class="mb-3" id="ofertas-valencia" style="display:none;">
+            <label class="form-label">Ofertas en Valencia</label>
+            <!-- Aquí puedes agregar ofertas de Valencia -->
+        </div>
+
+        <!-- Campos de correo e Instagram -->
+        <div class="mb-3">
+            <label for="correo" class="form-label required">Correo electrónico</label>
+            <input type="email" class="form-control" id="correo" name="correo" required>
+        </div>
+        <div class="mb-3">
+            <label for="instagram" class="form-label required">Instagram</label>
+            <input type="text" class="form-control" id="instagram" name="instagram" required>
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit" class="btn btn-primary w-100">Aplicar a la oferta</button>
+    </form>
+</div>
+
+<script>
+    // Mostrar las ofertas según la ubicación seleccionada
+    document.getElementById('ubicacion').addEventListener('change', function() {
+        var madrid = document.getElementById('ofertas-madrid');
+        var barcelona = document.getElementById('ofertas-barcelona');
+        var valencia = document.getElementById('ofertas-valencia');
+        
+        madrid.style.display = 'none';
+        barcelona.style.display = 'none';
+        valencia.style.display = 'none';
+        
+        if (this.value === 'madrid') {
+            madrid.style.display = 'block';
+        } else if (this.value === 'barcelona') {
+            barcelona.style.display = 'block';
+        } else if (this.value === 'valencia') {
+            valencia.style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>
